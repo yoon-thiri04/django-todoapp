@@ -1,0 +1,26 @@
+# Byte-compiled files
+*.pyc
+__pycache__/
+
+# Django stuff
+*.sqlite3
+/db.sqlite3
+
+# Virtual environments
+env/
+venv/
+
+# Logs
+*.log
+
+# Static files
+staticfiles/
+media/
+
+# IDE/editor config files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
