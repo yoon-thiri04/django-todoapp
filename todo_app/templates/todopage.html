@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<style>
+  .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top:30px;
+  font-family: "Poppins", sans-serif;
+}
+
+    .navigation-card {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background-color: rgb(255, 255, 255);
+  padding: 15px 20px;
+  border-radius: 50px;
+}
+.navigation-card a {
+text-decoration:none;
+}
+.navigation-card a i{
+font-size: 30px;
+color:black;
+}
+.input__container{
+display:flex;
+}
+.input__container input{
+padding:10px 20px;
+font-size:14px;
+border-radius:5px;
+border:1px solid grey;
+ font-family: "Poppins", sans-serif;
+}
+.submitclass{
+padding:1em 1em;
+font-size:16px;
+color:white;
+border-radius:5px;
+border:none;
+background-color:grey;
+ font-family: "Poppins", sans-serif;
+}
+.mytodo{
+display:flex;
+background-color:pink;
+padding:5px 8px;
+gap:20px;
+border-radius:8px;
+justify-content:space-between;
+margin-top:20px;
+width:300px;
+height:70px;
+}
+.mytodo h5{
+  font-size:15px;
+}
+.mytodo a{
+text-decoration:none;
+background-color:purple;
+margin-left:10px;
+font-size:14px;
+padding:5px 5px;
+color:white;
+border-radius:4px;
+
+ }
+.mytodo a:hover{
+background-color:darkred;
+  }
+</style>
+<body>
+<div class="container">
+<div class="navigation-card">
+  <a href="{% url 'signout' %}">
+   <i class="fa-solid fa-right-from-bracket"></i>
+  </a>
+</div>
+  <div> <h2>Welcome {{request.user}}</h2></div>
+    {% block content %}
+  <div class="input__container">
+       <form method="POST">
+         {% csrf_token %}
+
+        <input type="text" name="title" placeholder="Enter your task">
+        <input type="submit" value="Add Task" class="submitclass">
+         </form>
+      </div>
+  {% if res %}
+
+  {% for todo in res %}
+  <div class="mytodo">
+
+    <h5>{{ forloop.counter }}. {{todo.title}}</h5>
+    <p>
+      <a href="/edit_todo/{{todo.srno}}">Edit</a>
+      <a href="/delete_todo/{{todo.srno}}">Delete</a>
+    </p>
+  </div>
+  {% endfor %}
+  {% endif %}
+</div>
+{% endblock %}
+</body>
+</html>

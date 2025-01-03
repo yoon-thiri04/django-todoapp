@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Todo Page</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<style>
+  .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top:30px;
+  font-family: "Poppins", sans-serif;
+}
+
+.navigation-card {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background-color: rgb(255, 255, 255);
+  padding: 15px 20px;
+  border-radius: 50px;
+}
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  background-color: rgb(252, 252, 252);
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.tab:hover {
+  background-color: rgb(223, 223, 223);
+}
+.input__container{
+display:flex;
+}
+.input__container input{
+padding:10px 20px;
+font-size:14px;
+border-radius:5px;
+border:1px solid grey;
+ font-family: "Poppins", sans-serif;
+}
+.submitclass{
+padding:1em 1em;
+font-size:16px;
+color:white;
+border-radius:5px;
+border:none;
+background-color:grey;
+ font-family: "Poppins", sans-serif;
+}
+
+</style>
+<body>
+
+  {% extends 'todopage.html' %}
+   {% block content %}
+  <div class="input__container">
+       <form method="POST">
+         {% csrf_token %}
+
+        <input type="text" name="title" placeholder="Enter your task" value="{{obj.title}}">
+        <input type="submit" value="Update Task" class="submitclass">
+         </form>
+      </div>
+    {% endblock %}
+</div>
+</body>
+</html>
