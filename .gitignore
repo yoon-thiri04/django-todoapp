@@ -7,18 +7,18 @@ __pycache__/
 /db.sqlite3
 
 # Virtual environments
-env/
+
 venv/
 
 # Logs
 *.log
 
 # Static files
-staticfiles/
-media/
+/staticfiles/
+/media/
 
 # IDE/editor config files
-.vscode/
+
 .idea/
 
 # OS generated files

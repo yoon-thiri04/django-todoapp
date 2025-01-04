@@ -1,25 +1,25 @@
 # Byte-compiled files
 *.pyc
-__pycache__/
+/__pycache__/
 
 # Django stuff
 *.sqlite3
 /db.sqlite3
 
 # Virtual environments
-env/
-venv/
+
+/venv/
 
 # Logs
 *.log
 
 # Static files
-staticfiles/
-media/
+/staticfiles/
+/media/
 
 # IDE/editor config files
-.vscode/
-.idea/
+
+/.idea/
 
 # OS generated files
 .DS_Store
