@@ -1,26 +1,13 @@
-# Byte-compiled files
-*.pyc
-__pycache__/
+# Ignore virtual environment folder
+.venv/
 
-# Django stuff
-*.sqlite3
-/db.sqlite3
-
-# Virtual environments
-
-venv/
-
-# Logs
-*.log
-
-# Static files
-/staticfiles/
-/media/
-
-# IDE/editor config files
-
+# Ignore IDE-related files
 .idea/
 
-# OS generated files
-.DS_Store
-Thumbs.db
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Optional: Ignore all `.log` files or other unwanted files
+*.log
