@@ -1,1 +1,1 @@
-## Todo app testing with Django
+## Todo app with User authentication with Django
