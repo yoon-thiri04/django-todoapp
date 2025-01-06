@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from todo import models
 from todo.models import TODO
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def signup(request):
@@ -40,11 +42,12 @@ def user_login(request):
             error={
                 'context':'User name doesnt exit!! Please Signup first '
 
+
             }
             return render(request,'login.html',error)
     return render(request,'login.html')
+@login_required(login_url='/login')
 def get_todo(request):
-
     if request.method=='POST':
         title=request.POST.get('title')
         obj=models.TODO(title=title,user=request.user)
@@ -55,6 +58,7 @@ def get_todo(request):
         result=models.TODO.objects.filter(user=request.user).order_by('date')
         return render(request, 'todopage.html',{'res':result})
 
+@login_required(login_url='/login')
 def edittodo(request,srno):
 
     if request.method=='POST':
@@ -68,6 +72,7 @@ def edittodo(request,srno):
         obj = models.TODO.objects.get(srno=srno)
         return render(request, 'edittodo.html', {'obj': obj})
 
+@login_required(login_url='/login')
 def deletetodo(request,srno):
     obj=models.TODO.objects.get(srno=srno)
     obj.delete()
